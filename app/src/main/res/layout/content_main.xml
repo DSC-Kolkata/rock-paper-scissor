@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".MainActivity"
+    tools:showIn="@layout/activity_main">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/opponent_img"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/paper" />
+
+        <Button
+            android:id="@+id/rock_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Rock" />
+
+        <Button
+            android:id="@+id/paper_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paper" />
+
+        <Button
+            android:id="@+id/scissors_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Scissor" />
+
+        <Button
+            android:id="@+id/reset_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Reset" />
+
+        <TextView
+            android:id="@+id/opponent_played_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Your Opponent Played: Rock"
+            android:textSize="18sp"/>
+
+        <TextView
+            android:id="@+id/user_played_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="You Played: Rock"/>
+
+        <TextView
+            android:id="@+id/result_txt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Result: Draw"/>
+
+    </LinearLayout>
+
+</ScrollView>
