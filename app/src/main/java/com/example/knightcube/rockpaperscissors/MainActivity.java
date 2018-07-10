@@ -1,5 +1,6 @@
 package com.example.knightcube.rockpaperscissors;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -18,6 +19,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button rockBtn;
     private Button scissorBtn;
     private Button paperBtn;
+    private Button submitButton;
     private ImageView opponentInputImageView;
     private TextView opponentInputTextView;
     private TextView userInputTextView;
@@ -27,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private static final int GAME_STATE_WIN = 2;
     private int[] images = {R.drawable.rock,R.drawable.paper,R.drawable.scissor};
     private String TAG="MainActivity";
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        score = 0;
         rockBtn = findViewById(R.id.rock_btn);
         scissorBtn = findViewById(R.id.scissors_btn);
         paperBtn = findViewById(R.id.paper_btn);
@@ -42,10 +46,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         opponentInputTextView = findViewById(R.id.opponent_played_txt);
         userInputTextView = findViewById(R.id.user_played_txt);
         resultTextView = findViewById(R.id.result_txt);
+        submitButton = findViewById(R.id.submit_btn);
         rockBtn.setOnClickListener(this);
         scissorBtn.setOnClickListener(this);
         paperBtn.setOnClickListener(this);
         resetBtn.setOnClickListener(this);
+        submitButton.setOnClickListener(this);
+
     }
 
     private int generateRandomInputForOpponent() {
@@ -97,8 +104,17 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 Log.i(TAG, "onClick:called Reset ");
                 enableBtns();
                 break;
+            case R.id.submit_btn:
+                openDetailsActitity();
 
         }
+    }
+
+    private void openDetailsActitity() {
+        Log.i(TAG, "openDetailsActitity: "+score);
+        Intent intent = new Intent(MainActivity.this,DetailsActivity.class);
+        intent.putExtra("user_score",score);
+        startActivity(intent);
     }
 
     private void checkResults(int userInput, int opponentInput) {
@@ -134,8 +150,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }else if(gameState == GAME_STATE_WIN){
             Toast.makeText(this, "YOU WON", Toast.LENGTH_SHORT).show();
             resultTextView.setText("You Won");
-
+            score=score+5;
         }
+        resultTextView.append("\nYour Score:"+score);
     }
 
     private void disableOtherBtns() {

@@ -66,6 +66,11 @@
             android:layout_height="wrap_content"
             android:textSize="18sp"
             android:text="Result: Draw"/>
+        <Button
+            android:id="@+id/submit_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Submit Score"/>
 
     </LinearLayout>
 
