@@ -6,9 +6,7 @@ cap = cv2.VideoCapture(0)
 
 while (1):
 
-    try:  # an error comes if it does not find anything in window as it cannot find contour of max area
-        # therefore this try error statement
-
+    try:
         ret, frame = cap.read()
         frame = cv2.flip(frame, 1)
         kernel = np.ones((3, 3), np.uint8)
@@ -102,24 +100,10 @@ while (1):
         elif l == 2:
             cv2.putText(frame, 'SCISSOR', (0, 50), font, 2, (0, 255, 0), 3, cv2.LINE_AA)
 
-#        elif l == 3:
-
-#           if arearatio < 27:
-#               cv2.putText(frame, '3', (0, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
-#          else:
-#             cv2.putText(frame, 'ok', (0, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
-
-#        elif l == 4:
-#            cv2.putText(frame, '4', (0, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
 
         elif l == 5:
             cv2.putText(frame, 'PAPER', (0, 50), font, 2, (255, 0, 0), 3, cv2.LINE_AA)
 
-#        elif l == 6:
-#            cv2.putText(frame, 'reposition', (0, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
-
-#        else:
-#            cv2.putText(frame, 'reposition', (10, 50), font, 2, (0, 0, 255), 3, cv2.LINE_AA)
 
         # show the windows
         cv2.imshow('mask', mask)
